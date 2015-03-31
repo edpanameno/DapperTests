@@ -15,13 +15,11 @@ namespace DapperTests
         {
             DogRepository db = new DogRepository();
             
-            /*Dog newDog = new Dog();
-            newDog.Name = "Rambo";
-            newDog.Age = 4;
-            newDog.Weight = 20.32f;
-            Console.WriteLine("connection state before command: " + db.DB.State);
+            Dog newDog = new Dog();
+            newDog.Name = "Izzy";
+            newDog.Age = 8;
+            newDog.Weight = 30.32f;
             db.Create(newDog);
-            Console.WriteLine("connection state after command: " + db.DB.State);*/
 
             var allDogs = db.GetAll();
             foreach(var dog in allDogs)

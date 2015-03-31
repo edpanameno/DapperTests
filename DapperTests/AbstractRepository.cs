@@ -12,18 +12,11 @@ namespace DapperTests
 {
     public abstract class AbstractRepository<T> 
     {
-        private string ConnectionString { get; set; }
-        
-        /// <summary>
-        /// SqlConnection Object that is used to communicate with the
-        /// database with.
-        /// </summary>
         protected IDbConnection _db { get; set; }
 
         public AbstractRepository()
         {
-            ConnectionString = ConfigurationManager.ConnectionStrings["DapperTestsDB"].ConnectionString;
-            _db = new SqlConnection(ConnectionString);
+            _db = new SqlConnection(ConfigurationManager.ConnectionStrings["DapperTestsDB"].ConnectionString);
         }
 
         public abstract void Create(T obj);
