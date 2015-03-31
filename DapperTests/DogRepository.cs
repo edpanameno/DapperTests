@@ -15,11 +15,7 @@ namespace DapperTests
                             VALUES (@Name, @Age, @Weight); 
                             SELECT CAST(SCOPE_IDENTITY() AS INT)";
 
-            Console.WriteLine("DogRepository.Create Connection Status (before): " + DB.State);
-           
-            dog.DogID = DB.Query<int>(sqlQuery, dog).Single();
-            
-            Console.WriteLine("DogRepository.Create Connection Status (after): " + DB.State);
+            dog.DogID = _db.Query<int>(sqlQuery, dog).Single();
         }
 
         public override Dog Retrieve(int dogID)
@@ -39,7 +35,7 @@ namespace DapperTests
 
         public override List<Dog> GetAll()
         {
-            var dogs = DB.Query<Dog>("SELECT * FROM Dogs");
+            var dogs = _db.Query<Dog>("SELECT * FROM Dogs");
             return dogs.ToList();
         }
     }
